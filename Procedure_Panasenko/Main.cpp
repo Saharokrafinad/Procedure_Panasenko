@@ -22,6 +22,7 @@ int main(int argc, char* argv[])
 	cout << "Контейнер отсортирован" << endl;
 	Sort(c);
 	OutContainer(c, outFileStream);
+	OutRectangles(c, outFileStream);
 	ClearContainer(c);
 	cout << "Контейнер очищен" << endl;
 	cout << "Завершение работы" << endl;
