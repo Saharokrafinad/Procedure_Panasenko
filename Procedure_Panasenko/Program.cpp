@@ -9,7 +9,11 @@ void InRectangle(rectangle& r, ifstream& ifst)
 }
 void OutRectangle(rectangle& r, ofstream& ofst)
 {
-	ofst << "Прямоугольник: x = " << r.x << ", y = " << r.y << endl;
+	ofst << "Прямоугольник: x = " << r.x << ", y = " << r.y;
+}
+int Perimeter(rectangle& r)
+{
+	return 2 * (r.x + r.y);
 }
 //----------------------------------------------------------------------------------------------
 // Круг
@@ -17,6 +21,10 @@ void OutRectangle(rectangle& r, ofstream& ofst)
 void InCircle(circle& c, ifstream& ifst)
 {
 	ifst >> c.r;
+}
+int Perimeter(circle& c)
+{
+	return int(2 * 3.14 * c.r);
 }
 void OutCircle(circle& c, ofstream& ofst)
 {
@@ -53,6 +61,18 @@ void OutShape(shape& s, ofstream& ofst)
 		break;
 	}
 }
+
+	int Perimeter(shape & s)
+	{
+		switch (s.k)
+		{
+		case shape::key::RECTANGLE:
+			return Perimeter(s.r);
+		case shape::key::CIRCLE:
+			return Perimeter(s.c);
+		}
+	}
+
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
 //----------------------------------------------------------------------------------------------
@@ -91,6 +111,7 @@ void OutContainer(container& c, ofstream& ofst)
 	while (current != NULL)
 	{
 		OutShape(current->data, ofst);
+		ofst << "Периметр: " << Perimeter(current->data) << endl;
 		current = current->next;
 	}
 }
