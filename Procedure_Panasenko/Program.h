@@ -38,6 +38,7 @@ struct shape
 void InShape(shape& s, ifstream& ifst);
 void OutShape(shape& s, ofstream& ofst);
 int Perimeter(shape& s);
+bool Compare(shape& first, shape& second);
 //----------------------------------------------------------------------------------------------
 // Элемент контейнера - односвязного списка
 //----------------------------------------------------------------------------------------------
@@ -58,4 +59,5 @@ void InitContainer(container& c);
 void InContainer(container& c, ifstream& ifst);
 void OutContainer(container& c, ofstream& ofst);
 void ClearContainer(container& c);
+void Sort(container& c);
 #endif
