@@ -21,16 +21,26 @@ struct circle
 void InCircle(circle& c, ifstream& ifst);
 void OutCircle(circle& c, ofstream& ofst);
 //----------------------------------------------------------------------------------------------
+// Треугольник
+//----------------------------------------------------------------------------------------------
+struct triangle
+{
+	int x1, x2, x3;
+};
+void InTriangle(triangle& t, ifstream& ifst);
+void OutTriangle(triangle& t, ofstream& ofst);
+//----------------------------------------------------------------------------------------------
 // Геометрическая фигура
 //----------------------------------------------------------------------------------------------
 struct shape
 {
-	enum key { RECTANGLE, CIRCLE };
+	enum key { RECTANGLE, CIRCLE, TRIANGLE};
 	key k;
 	union
 	{
 		rectangle r;
 		circle c;
+		triangle t;
 	};
 };
 void InShape(shape& s, ifstream& ifst);
