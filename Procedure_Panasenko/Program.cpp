@@ -39,7 +39,11 @@ void InTriangle(triangle& t, ifstream& ifst)
 }
 void OutTriangle(triangle& t, ofstream& ofst)
 {
-	ofst << "Треугольник: x1 = " << t.x1 << ", x2 = " << t.x2 << ", x3 = " << t.x3 << endl;
+	ofst << "Треугольник: x1 = " << t.x1 << ", x2 = " << t.x2 << ", x3 = " << t.x3;
+}
+int Perimeter(triangle& t)
+{
+	return t.x1 + t.x2 + t.x3;
 }
 //----------------------------------------------------------------------------------------------
 // Геометрическая фигура
@@ -88,6 +92,8 @@ void OutShape(shape& s, ofstream& ofst)
 			return Perimeter(s.r);
 		case shape::key::CIRCLE:
 			return Perimeter(s.c);
+		case shape::key::TRIANGLE:
+			return Perimeter(s.t);
 		}
 	}
 	bool Compare(shape& first, shape& second)
@@ -152,4 +158,22 @@ void Sort(container& c)
 		for (node* j = c.head; j; j = j->next)
 			if (Compare(i->data, j->data))
 				swap(i->data, j->data);
+}
+void OutRectangles(container& c, ofstream& ofst)
+{
+	ofst << "\nТолько прямоугольники:" << endl;
+	node* current = c.head;
+	if (current == NULL)
+		return;
+	while (current != NULL)
+	{
+		if (current->data.k == shape::RECTANGLE)
+		{
+			
+			OutShape(current->data, ofst);
+			ofst << "\n" << endl;
+		}
+		current = current->next;
+		
+	}
 }
