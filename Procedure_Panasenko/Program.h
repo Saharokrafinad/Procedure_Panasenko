@@ -29,6 +29,7 @@ struct shape
 {
 	enum key { RECTANGLE, CIRCLE };
 	key k;
+	int density;
 	union
 	{
 		rectangle r;
