@@ -9,7 +9,7 @@ void InRectangle(rectangle& r, ifstream& ifst)
 }
 void OutRectangle(rectangle& r, ofstream& ofst)
 {
-	ofst << "Прямоугольник: x = " << r.x << ", y = " << r.y << endl;
+	ofst << "Прямоугольник: x = " << r.x << ", y = " << r.y;
 }
 //----------------------------------------------------------------------------------------------
 // Круг
@@ -20,7 +20,7 @@ void InCircle(circle& c, ifstream& ifst)
 }
 void OutCircle(circle& c, ofstream& ofst)
 {
-	ofst << "Круг: r = " << c.r << endl;
+	ofst << "Круг: r = " << c.r;
 }
 //----------------------------------------------------------------------------------------------
 // Геометрическая фигура
@@ -40,6 +40,7 @@ void InShape(shape& s, ifstream& ifst)
 		InCircle(s.c, ifst);
 		break;
 	}
+	ifst >> s.density;
 }
 void OutShape(shape& s, ofstream& ofst)
 {
@@ -52,6 +53,7 @@ void OutShape(shape& s, ofstream& ofst)
 		OutCircle(s.c, ofst);
 		break;
 	}
+	ofst << " Плотность = " << s.density << endl;
 }
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
