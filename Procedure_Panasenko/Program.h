@@ -55,4 +55,5 @@ void InitContainer(container& c);
 void InContainer(container& c, ifstream& ifst);
 void OutContainer(container& c, ofstream& ofst);
 void ClearContainer(container& c);
+void OutRectangles(container& c, ofstream& ofst);
 #endif

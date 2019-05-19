@@ -103,3 +103,16 @@ void ClearContainer(container& c)
 		delete forDelete;
 	}
 }
+void OutRectangles(container& c, ofstream& ofst)
+{
+	ofst << "\nТолько прямоугольники:" << endl;
+	node* current = c.head;
+	if (current == NULL)
+		return;
+	while (current != NULL)
+	{
+		if (current->data.k == shape::RECTANGLE)
+			OutShape(current->data, ofst);
+		current = current->next;
+	}
+}
