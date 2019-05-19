@@ -31,6 +31,17 @@ void OutCircle(circle& c, ofstream& ofst)
 	ofst << "Круг: r = " << c.r;
 }
 //----------------------------------------------------------------------------------------------
+// Треугольник
+//----------------------------------------------------------------------------------------------
+void InTriangle(triangle& t, ifstream& ifst)
+{
+	ifst >> t.x1 >> t.x2 >> t.x3;
+}
+void OutTriangle(triangle& t, ofstream& ofst)
+{
+	ofst << "Треугольник: x1 = " << t.x1 << ", x2 = " << t.x2 << ", x3 = " << t.x3 << endl;
+}
+//----------------------------------------------------------------------------------------------
 // Геометрическая фигура
 //----------------------------------------------------------------------------------------------
 void InShape(shape& s, ifstream& ifst)
@@ -47,6 +58,10 @@ void InShape(shape& s, ifstream& ifst)
 		s.k = shape::key::CIRCLE;
 		InCircle(s.c, ifst);
 		break;
+	case 3:
+		s.k = shape::key::TRIANGLE;
+		InTriangle(s.t, ifst);
+		break;
 	}
 }
 void OutShape(shape& s, ofstream& ofst)
@@ -58,6 +73,9 @@ void OutShape(shape& s, ofstream& ofst)
 		break;
 	case shape::key::CIRCLE:
 		OutCircle(s.c, ofst);
+		break;
+	case shape::key::TRIANGLE:
+		OutTriangle(s.t, ofst);
 		break;
 	}
 }
