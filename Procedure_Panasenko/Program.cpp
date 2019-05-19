@@ -72,6 +72,10 @@ void OutShape(shape& s, ofstream& ofst)
 			return Perimeter(s.c);
 		}
 	}
+	bool Compare(shape& first, shape& second)
+	{
+		return Perimeter(first) < Perimeter(second);
+	}
 
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
@@ -123,4 +127,11 @@ void ClearContainer(container& c)
 		c.head = c.head->next;
 		delete forDelete;
 	}
+}
+void Sort(container& c)
+{
+	for (node* i = c.head; i; i = i->next)
+		for (node* j = c.head; j; j = j->next)
+			if (Compare(i->data, j->data))
+				swap(i->data, j->data);
 }
