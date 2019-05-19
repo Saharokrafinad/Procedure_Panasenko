@@ -28,7 +28,7 @@ int Perimeter(circle& c)
 }
 void OutCircle(circle& c, ofstream& ofst)
 {
-	ofst << "Круг: r = " << c.r << endl;
+	ofst << "Круг: r = " << c.r;
 }
 //----------------------------------------------------------------------------------------------
 // Геометрическая фигура
@@ -111,7 +111,7 @@ void OutContainer(container& c, ofstream& ofst)
 	while (current != NULL)
 	{
 		OutShape(current->data, ofst);
-		ofst << "Периметр: " << Perimeter(current->data) << endl;
+		ofst << " Периметр: " << Perimeter(current->data) << endl;
 		current = current->next;
 	}
 }
