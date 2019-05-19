@@ -104,7 +104,7 @@ void InContainer(container& c, ifstream& ifst)
 }
 void OutContainer(container& c, ofstream& ofst)
 {
-	ofst << "Контейнер содержит:" << endl;
+	ofst << "Контейнер содержит:\n" << endl;
 	node* current = c.head;
 	if (current == NULL)
 		return;
