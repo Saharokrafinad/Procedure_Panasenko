@@ -67,6 +67,7 @@ void InShape(shape& s, ifstream& ifst)
 		InTriangle(s.t, ifst);
 		break;
 	}
+	ifst >> s.density;
 }
 void OutShape(shape& s, ofstream& ofst)
 {
@@ -82,6 +83,7 @@ void OutShape(shape& s, ofstream& ofst)
 		OutTriangle(s.t, ofst);
 		break;
 	}
+	ofst << " Плотность = " << s.density;
 }
 
 	int Perimeter(shape & s)
@@ -171,7 +173,6 @@ void OutRectangles(container& c, ofstream& ofst)
 		{
 			
 			OutShape(current->data, ofst);
-			ofst << "\n" << endl;
 		}
 		current = current->next;
 		
