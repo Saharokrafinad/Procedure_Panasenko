@@ -31,6 +31,7 @@ struct triangle
 };
 void InTriangle(triangle& t, ifstream& ifst);
 void OutTriangle(triangle& t, ofstream& ofst);
+int Perimeter(triangle& c);
 //----------------------------------------------------------------------------------------------
 // Геометрическая фигура
 //----------------------------------------------------------------------------------------------
@@ -38,13 +39,14 @@ struct shape
 {
 	enum key { RECTANGLE, CIRCLE, TRIANGLE};
 	key k;
-	int density;
 	union
 	{
 		rectangle r;
 		circle c;
 		triangle t;
 	};
+
+	int density;
 };
 void InShape(shape& s, ifstream& ifst);
 void OutShape(shape& s, ofstream& ofst);
@@ -72,4 +74,5 @@ void OutContainer(container& c, ofstream& ofst);
 void ClearContainer(container& c);
 void Sort(container& c);
 void OutRectangles(container& c, ofstream& ofst);
+void AddElement(container& c, shape* element);
 #endif

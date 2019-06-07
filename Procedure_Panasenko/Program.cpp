@@ -178,3 +178,20 @@ void OutRectangles(container& c, ofstream& ofst)
 		
 	}
 }
+
+void AddElement(container& c, shape* element)
+{
+	node* temp = new node;
+	temp->data = *element;
+	temp->next = NULL;
+	if (c.head == NULL)
+	{
+		c.head = temp;
+		c.last = temp;
+	}
+	else
+	{
+		c.last->next = temp;
+		c.last = temp;
+	}
+}
