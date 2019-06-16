@@ -7,7 +7,7 @@ using namespace std;
 //----------------------------------------------------------------------------------------------
 struct rectangle
 {
-	int x, y;
+	int side1, side2;
 };
 void InRectangle(rectangle& r, ifstream& ifst);
 void OutRectangle(rectangle& r, ofstream& ofst);
@@ -17,7 +17,7 @@ int Perimeter(rectangle& r);
 //----------------------------------------------------------------------------------------------
 struct circle
 {
-	int r;
+	int radius;
 };
 void InCircle(circle& c, ifstream& ifst);
 void OutCircle(circle& c, ofstream& ofst);
@@ -27,7 +27,7 @@ int Perimeter(circle& c);
 //----------------------------------------------------------------------------------------------
 struct triangle
 {
-	int x1, x2, x3;
+	int side1, side2, side3;
 };
 void InTriangle(triangle& t, ifstream& ifst);
 void OutTriangle(triangle& t, ofstream& ofst);
@@ -37,7 +37,7 @@ void OutTriangle(triangle& t, ofstream& ofst);
 struct shape
 {
 	enum key { RECTANGLE, CIRCLE, TRIANGLE};
-	key k;
+	key type;
 	int density;
 	union
 	{
@@ -61,15 +61,15 @@ struct node
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
 //----------------------------------------------------------------------------------------------
-struct container
+struct Container
 {
 	node* head;
 	node* last;
 };
-void InitContainer(container& c);
-void InContainer(container& c, ifstream& ifst);
-void OutContainer(container& c, ofstream& ofst);
-void ClearContainer(container& c);
-void Sort(container& c);
-void OutRectangles(container& c, ofstream& ofst);
+void InitContainer(Container& c);
+void InContainer(Container& c, ifstream& ifst);
+void OutContainer(Container& c, ofstream& ofst);
+void ClearContainer(Container& c);
+void Sort(Container& c);
+void OutRectangles(Container& c, ofstream& ofst);
 #endif

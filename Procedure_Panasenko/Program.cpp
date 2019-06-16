@@ -5,65 +5,65 @@ using namespace std;
 //----------------------------------------------------------------------------------------------
 void InRectangle(rectangle& r, ifstream& ifst)
 {
-	ifst >> r.x >> r.y;
+	ifst >> r.side1 >> r.side2;
 }
 void OutRectangle(rectangle& r, ofstream& ofst)
 {
-	ofst << "Прямоугольник: x = " << r.x << ", y = " << r.y;
+	ofst << "Прямоугольник: x = " << r.side1 << ", y = " << r.side2;
 }
 int Perimeter(rectangle& r)
 {
-	return 2 * (r.x + r.y);
+	return 2 * (r.side1 + r.side2);
 }
 //----------------------------------------------------------------------------------------------
 // Круг
 //----------------------------------------------------------------------------------------------
-void InCircle(circle& c, ifstream& ifst)
+void InCircle(circle& container, ifstream& ifst)
 {
-	ifst >> c.r;
+	ifst >> container.radius;
 }
-int Perimeter(circle& c)
+int Perimeter(circle& container)
 {
-	return int(2 * 3.14 * c.r);
+	return int(2 * 3.14 * container.radius);
 }
-void OutCircle(circle& c, ofstream& ofst)
+void OutCircle(circle& container, ofstream& ofst)
 {
-	ofst << "Круг: r = " << c.r;
+	ofst << "Круг: r = " << container.radius;
 }
 //----------------------------------------------------------------------------------------------
 // Треугольник
 //----------------------------------------------------------------------------------------------
 void InTriangle(triangle& t, ifstream& ifst)
 {
-	ifst >> t.x1 >> t.x2 >> t.x3;
+	ifst >> t.side1 >> t.side2 >> t.side3;
 }
 void OutTriangle(triangle& t, ofstream& ofst)
 {
-	ofst << "Треугольник: x1 = " << t.x1 << ", x2 = " << t.x2 << ", x3 = " << t.x3;
+	ofst << "Треугольник: x1 = " << t.side1 << ", x2 = " << t.side2 << ", x3 = " << t.side3;
 }
 int Perimeter(triangle& t)
 {
-	return t.x1 + t.x2 + t.x3;
+	return t.side1 + t.side2 + t.side3;
 }
 //----------------------------------------------------------------------------------------------
 // Геометрическая фигура
 //----------------------------------------------------------------------------------------------
 void InShape(shape& s, ifstream& ifst)
 {
-	int k;
-	ifst >> k;
-	switch (k)
+	int index;
+	ifst >> index;
+	switch (index)
 	{
 	case 1:
-		s.k = shape::key::RECTANGLE;
+		s.type = shape::key::RECTANGLE;
 		InRectangle(s.r, ifst);
 		break;
 	case 2:
-		s.k = shape::key::CIRCLE;
+		s.type = shape::key::CIRCLE;
 		InCircle(s.c, ifst);
 		break;
 	case 3:
-		s.k = shape::key::TRIANGLE;
+		s.type = shape::key::TRIANGLE;
 		InTriangle(s.t, ifst);
 		break;
 	}
@@ -71,7 +71,7 @@ void InShape(shape& s, ifstream& ifst)
 }
 void OutShape(shape& s, ofstream& ofst)
 {
-	switch (s.k)
+	switch (s.type)
 	{
 	case shape::key::RECTANGLE:
 		OutRectangle(s.r, ofst);
@@ -85,10 +85,9 @@ void OutShape(shape& s, ofstream& ofst)
 	}
 	ofst << " Плотность = " << s.density;
 }
-
 	int Perimeter(shape & s)
 	{
-		switch (s.k)
+		switch (s.type)
 		{
 		case shape::key::RECTANGLE:
 			return Perimeter(s.r);
@@ -102,16 +101,15 @@ void OutShape(shape& s, ofstream& ofst)
 	{
 		return Perimeter(first) < Perimeter(second);
 	}
-
 //----------------------------------------------------------------------------------------------
 // Контейнер - односвязный список
 //----------------------------------------------------------------------------------------------
-void InitContainer(container& c)
+void InitContainer(Container& container)
 {
-	c.head = NULL;
-	c.last = NULL;
+	container.head = NULL;
+	container.last = NULL;
 }
-void InContainer(container& c, ifstream& ifst)
+void InContainer(Container& container, ifstream& ifst)
 {
 	while (!ifst.eof())
 	{
@@ -120,22 +118,22 @@ void InContainer(container& c, ifstream& ifst)
 		node* temp = new node;
 		temp->data = data;
 		temp->next = NULL;
-		if (c.head == NULL)
+		if (container.head == NULL)
 		{
-			c.head = temp;
-			c.last = temp;
+			container.head = temp;
+			container.last = temp;
 		}
 		else
 		{
-			c.last->next = temp;
-			c.last = temp;
+			container.last->next = temp;
+			container.last = temp;
 		}
 	}
 }
-void OutContainer(container& c, ofstream& ofst)
+void OutContainer(Container& container, ofstream& ofst)
 {
 	ofst << "Контейнер содержит:\n" << endl;
-	node* current = c.head;
+	node* current = container.head;
 	if (current == NULL)
 		return;
 	while (current != NULL)
@@ -145,31 +143,31 @@ void OutContainer(container& c, ofstream& ofst)
 		current = current->next;
 	}
 }
-void ClearContainer(container& c)
+void ClearContainer(Container& container)
 {
-	while (c.head != NULL)
+	while (container.head != NULL)
 	{
-		node* forDelete = c.head;
-		c.head = c.head->next;
+		node* forDelete = container.head;
+		container.head = container.head->next;
 		delete forDelete;
 	}
 }
-void Sort(container& c)
+void Sort(Container& container)
 {
-	for (node* i = c.head; i; i = i->next)
-		for (node* j = c.head; j; j = j->next)
+	for (node* i = container.head; i; i = i->next)
+		for (node* j = container.head; j; j = j->next)
 			if (Compare(i->data, j->data))
 				swap(i->data, j->data);
 }
-void OutRectangles(container& c, ofstream& ofst)
+void OutRectangles(Container& container, ofstream& ofst)
 {
 	ofst << "\nТолько прямоугольники:" << endl;
-	node* current = c.head;
+	node* current = container.head;
 	if (current == NULL)
 		return;
 	while (current != NULL)
 	{
-		if (current->data.k == shape::RECTANGLE)
+		if (current->data.type == shape::RECTANGLE)
 		{
 			
 			OutShape(current->data, ofst);

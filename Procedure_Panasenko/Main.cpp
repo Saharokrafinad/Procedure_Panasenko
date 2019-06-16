@@ -1,7 +1,6 @@
 ﻿#include <iostream>
 #include "Program.h"
 using namespace std;
-
 int main(int argc, char* argv[])
 {
 	setlocale(LC_ALL, "Russian");
@@ -10,23 +9,20 @@ int main(int argc, char* argv[])
 		cout << "Ошибка. Не найдены файлы in_file out_file" << endl;
 		exit(1);
 	}
-
 	ifstream inFileStream(argv[1]);
 	ofstream outFileStream(argv[2]);
-	container c;
-
+	Container container;
 	cout << "Старт" << endl;
-	InitContainer(c);
-	InContainer(c, inFileStream);
+	InitContainer(container);
+	InContainer(container, inFileStream);
 	cout << "Контейнер заполнен" << endl;
 	cout << "Контейнер отсортирован" << endl;
-	Sort(c);
-	OutContainer(c, outFileStream);
-	OutRectangles(c, outFileStream);
-	ClearContainer(c);
+	Sort(container);
+	OutContainer(container, outFileStream);
+	OutRectangles(container, outFileStream);
+	ClearContainer(container);
 	cout << "Контейнер очищен" << endl;
 	cout << "Завершение работы" << endl;
-
 	system("pause");
 	return 0;
 }
