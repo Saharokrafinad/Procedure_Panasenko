@@ -103,3 +103,51 @@ void ClearContainer(container& c)
 		delete forDelete;
 	}
 }
+//----------------------------------------------------------------------------------------------
+// Мультиметод
+//----------------------------------------------------------------------------------------------
+void MultiMethod(container& c, ofstream& ofst)
+{
+	ofst << "Мултиметод:" << endl;
+	node* i = c.head;
+	while (i->next)
+	{
+		node* j = i->next;
+		while (j)
+		{
+			switch (i->data.k)
+			{
+			case shape::RECTANGLE:
+				switch (j->data.k)
+				{
+				case shape::RECTANGLE:
+					ofst << "Прямоугольник и прямоугольник" << endl;
+					break;
+				case shape::CIRCLE:
+					ofst << "Прямоугольник и круг" << endl;
+					break;
+				default:
+					ofst << "Неизвестный тип" << endl;
+				}
+				break;
+			case shape::CIRCLE:
+				switch (j->data.k)
+				{
+				case shape::RECTANGLE:
+					ofst << "Круг и прямоугольник" << endl;
+					break;
+				case shape::CIRCLE:
+					ofst << "Круг и круг" << endl;
+					break;
+				default:
+					ofst << "Неизвестный тип" << endl;
+				}
+				break;
+			default:
+				ofst << "Неизвсетный тип" << endl;
+			}
+			j = j->next;
+		}
+		i = i->next;
+	}
+}

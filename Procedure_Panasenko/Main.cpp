@@ -20,6 +20,7 @@ int main(int argc, char* argv[])
 	InContainer(c, inFileStream);
 	cout << "Контейнер заполнен" << endl;
 	OutContainer(c, outFileStream);
+	MultiMethod(c, outFileStream);
 	ClearContainer(c);
 	cout << "Контейнер очищен" << endl;
 	cout << "Завершение работы" << endl;

@@ -55,4 +55,8 @@ void InitContainer(container& c);
 void InContainer(container& c, ifstream& ifst);
 void OutContainer(container& c, ofstream& ofst);
 void ClearContainer(container& c);
+//----------------------------------------------------------------------------------------------
+// Ìףכüעטלועמה
+//----------------------------------------------------------------------------------------------
+void MultiMethod(container& c, ofstream& ofst);
 #endif
