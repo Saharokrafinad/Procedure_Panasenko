@@ -173,8 +173,79 @@ void OutRectangles(container& c, ofstream& ofst)
 		{
 			
 			OutShape(current->data, ofst);
+			ofst << endl;
 		}
 		current = current->next;
 		
+	}
+}
+//----------------------------------------------------------------------------------------------
+// Мультиметод
+//----------------------------------------------------------------------------------------------
+void MultiMethod(container& c, ofstream& ofst)
+{
+	ofst << "Мультиметод:" << endl;
+	node* i = c.head;
+	while (i->next)
+	{
+		node* j = i->next;
+		while (j)
+		{
+			switch (i->data.k)
+			{
+			case shape::RECTANGLE:
+				switch (j->data.k)
+				{
+				case shape::RECTANGLE:
+					ofst << "Прямоугольник и прямоугольник" << endl;
+					break;
+				case shape::CIRCLE:
+					ofst << "Прямоугольник и круг" << endl;
+					break;
+				case shape::TRIANGLE:
+					ofst << "Прямоугольник и треугольник" << endl;
+					break;
+				default:
+					ofst << "Неизвестный тип" << endl;
+				}
+				break;
+			case shape::CIRCLE:
+				switch (j->data.k)
+				{
+				case shape::RECTANGLE:
+					ofst << "Круг и прямоугольник" << endl;
+					break;
+				case shape::CIRCLE:
+					ofst << "Круг и круг" << endl;
+					break;
+				case shape::TRIANGLE:
+					ofst << "Круг и треугольник" << endl;
+					break;
+				default:
+					ofst << "Неизвестный тип" << endl;
+				}
+				break;
+			case shape::TRIANGLE:
+				switch (j->data.k)
+				{
+				case shape::RECTANGLE:
+					ofst << "Треугольник и прямоугольник" << endl;
+					break;
+				case shape::CIRCLE:
+					ofst << "Треугольник и круг" << endl;
+					break;
+				case shape::TRIANGLE:
+					ofst << "Треугольник и треугольник" << endl;
+					break;
+				default:
+					ofst << "Неизвестный тип" << endl;
+				}
+				break;
+			default:
+				ofst << "Неизвестный тип" << endl;
+			}
+			j = j->next;
+		}
+		i = i->next;
 	}
 }

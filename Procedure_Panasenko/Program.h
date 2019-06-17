@@ -72,4 +72,8 @@ void OutContainer(container& c, ofstream& ofst);
 void ClearContainer(container& c);
 void Sort(container& c);
 void OutRectangles(container& c, ofstream& ofst);
+//----------------------------------------------------------------------------------------------
+// Ìףכüעטלועמה
+//----------------------------------------------------------------------------------------------
+void MultiMethod(container& c, ofstream& ofst);
 #endif
